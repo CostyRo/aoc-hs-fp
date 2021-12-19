@@ -1,3 +1,4 @@
+-- create the main function
 main :: IO()
 main=do
   let array=[
@@ -12,4 +13,6 @@ main=do
               "egadfb cdbfeg cegd fecab cgb gbdefca cg fgcdab egfdb bfceg | gbdfcae bgc cg cgb",
               "gcafb gcf dcaebfg ecagb gf abcdeg gaef cafbge fdbac fegbdc | fgae cfgab fg bagce"
             ]
+  -- set the input array
   print (length [y | x <- array, y <- words (drop 61 x), length y == 2 || length y == 3 || length y == 4 || length y == 7])
+  -- and print the result
