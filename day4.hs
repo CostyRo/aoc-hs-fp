@@ -14,13 +14,13 @@ eliminate (Just a)=a
 -- create a function to get the index of the minimum of the array
 minIndex :: [Int] -> Int
 minIndex list=head (filter ((== minimum list) . (list !!)) [0..])
--- filter the list to get only places when minimum appears and save the index
--- return the head of the new list
+-- filter the array to get only places when minimum appears and save the index
+-- return the head of the new array
 
 -- create a function to get the most common bit from  a bit number
 minimumArrayIndexForMatrices :: [Int] -> [[[Int]]] -> [Int]
 minimumArrayIndexForMatrices array matrices=[minimum [maximum (map (eliminate . (`elemIndex` array)) y) | y <- x] | x <- matrices]
--- loop the list with matrices
+-- loop the array with matrices
 -- and than loop rows of the matrices
 -- after this aply eliminate and elemIndex to all elements
 -- to know when element appears in the array

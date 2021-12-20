@@ -14,5 +14,10 @@ main=do
               "gcafb gcf dcaebfg ecagb gf abcdeg gaef cafbge fdbac fegbdc | fgae cfgab fg bagce"
             ]
   -- set the input array
+
   print (length [y | x <- array, y <- words (drop 61 x), length y == 2 || length y == 3 || length y == 4 || length y == 7])
+  -- ignore first 61 chars because are useless
+  -- aply word to remaining string to separate the words
+  -- filter words that don't have a length of 2,3,4 or 7
+  -- get the length of this array
   -- and print the result

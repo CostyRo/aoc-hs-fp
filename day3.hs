@@ -14,7 +14,7 @@ mostCommonBit bit_number
 -- create a function to convert a string that represent a bit number to an int
 bintodec :: String -> Int
 bintodec bin=sum [2 ^ snd x * digitToInt (fst x) | x <- zip (reverse bin) [0..]]
--- reverse the bit number and zip it with an infinite list that starts at 0
+-- reverse the bit number and zip it with an infinite array that starts at 0
 -- make an array with 0 if the bit is zero
 -- and with 2^(current index of number) if the bit
 -- return the sum of the array

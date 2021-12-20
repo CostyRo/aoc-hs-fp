@@ -17,7 +17,7 @@ split str=
 -- create a function to get only the elements at an even index
 evens :: [(Int,Int)] -> [(Int,Int)]
 evens list=[x | (x,i) <- zip list [0..], even i]
--- enumerate list add filter elements which doesn't have an even index
+-- enumerate array add filter elements which doesn't have an even index
 
 -- create a function to get only the elements at an odd index
 odds :: [(Int,Int)] -> [(Int,Int)]
@@ -60,7 +60,14 @@ main=do
   -- convert them to int and put them in a tuple
 
   let linearCoordinatesList=[sort x | x <- zip (evens coordinatesList) (odds coordinatesList), uncurry linear x]
-  -- zip evens list and odds list to get the tuples with start and stop coordinates
+  -- zip evens array and odds arsay to get the tuples with start and stop coordinates
+  -- uncurry to separate in two different arguments
+  -- to filter points that aren't linear
+  -- and sort the remaining tuples
 
   print (length ([y | x <- linearCoordinatesList, y <- range x]) - length (nub [y | x <- linearCoordinatesList, y <- range x]))
+  -- use range function to generate all points in these ranges
+  -- apply length to get the number of points
+  -- similar for the set of this array
+  -- substract lenght of set from lenght of array
   -- and print the result
