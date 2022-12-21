@@ -84,7 +84,11 @@ main=do
         (\\)
           [y | x <- matrices !! index_winning_matrix, y <- x] $
           take
-            ((+) (to_int (final_number `elemIndex` array)) 1)
+            (
+              ((+) . to_int)
+                (final_number `elemIndex` array)
+                1
+            )
             array
   -- flat the winning matrix
   -- and substract from it the list with elements that appears already in the bingo list
