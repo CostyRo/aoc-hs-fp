@@ -38,8 +38,8 @@ main=do
 
   let coordinates=[
           (
-            (read :: String -> Int) $ reverse $ second_number $ reverse y,
-            (read :: String -> Int) $ second_number y
+            read $ reverse $ second_number $ reverse y,
+            read $ second_number y
           )
             | x <- array,
               y <- filter (/= "->") $ words x

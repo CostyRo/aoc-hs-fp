@@ -9,7 +9,7 @@ command_number str
 
 filtered_array :: [String] -> String -> [Int]
 filtered_array array command=[
-    (read :: String -> Int) $ command_number x
+    read $ command_number x
       | x <- array,
         command `isPrefixOf` x
   ]
