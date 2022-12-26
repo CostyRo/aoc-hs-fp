@@ -11,9 +11,11 @@ bintodec :: String -> Int
 bintodec bin_number=
   sum
     [
-      2 ^ snd x * digitToInt (fst x)
+      bin_formula x
         | x <- (zip . reverse) bin_number [0..]
     ]
+  where bin_formula x=
+          2 ^ snd x * digitToInt (fst x)
 
 main :: IO()
 main=do

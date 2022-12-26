@@ -1,7 +1,7 @@
 {-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
 {-# HLINT ignore "Use camelCase" #-}
 
-split_by_value :: String -> [String] -> [[String]]
+split_by_value :: Eq p => p -> [p] -> [[p]]
 split_by_value item list = f list []
   where
     f [] buffer = [buffer]
@@ -19,7 +19,7 @@ main = do
   let max_calories=
         maximum
           [
-            sum [(read :: String -> Int) y | y <- x]
+            (sum . map read) x
               | x <- split_by_value "" string_lines
           ]
 

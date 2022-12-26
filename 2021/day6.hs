@@ -12,7 +12,8 @@ simulate n list=
     (n-1) $
     (++)
       [next_day x | x <- list]
-      [8 | _ <- [0..(-) (length $ filter (== 0) list) 1]]
+      (replicate 8 (count 0 list - 1))
+  where count x list= length $ filter (== x) list
 
 main :: IO()
 main=do

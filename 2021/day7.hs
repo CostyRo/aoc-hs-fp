@@ -10,7 +10,7 @@ main=do
             abs $
             zipWith
               (-)
-              array
-              [x | _ <- [0..length array]]
+              array $
+              replicate x (length array)
                 | x <- [minimum array..maximum array]
       ]

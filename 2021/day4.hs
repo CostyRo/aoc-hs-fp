@@ -1,28 +1,26 @@
 {-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
 {-# HLINT ignore "Use camelCase" #-}
 import Data.List ((\\),elemIndex,transpose)
+import Data.Maybe (fromMaybe)
 
-to_int :: Maybe Int -> Int
-to_int (Just a)=a
-
-min_index :: [Int] -> Int
+min_index :: Ord b => [b] -> Int
 min_index list=
   head $
     filter
       ((== minimum list) . (list !!))
       [0..]
 
-last_number_index :: [Int] -> [[Int]] -> [Int]
+last_number_index :: Eq a => [a] -> [[a]] -> [Int]
 last_number_index array matrix=[
     maximum $
       map
-        (to_int . (`elemIndex` array))
+        (fromMaybe 0 . (`elemIndex` array))
         row
           | row <- matrix
   ]
 -- calculate the index of the last number that appears in the array for each row
 
-min_winning_index :: [Int] -> [[[Int]]] -> [Int]
+min_winning_index :: Eq a => [a] -> [[[a]]] -> [Int]
 min_winning_index array matrices=[
     minimum $
       last_number_index
@@ -65,7 +63,9 @@ main=do
         ]
 
   let (min_winning_index_matrices,min_winning_index_transposed)=
-        (min_winning_index array matrices,min_winning_index array transposed_matrices)
+        (min_win_index_mat matrices,
+          min_win_index_mat transposed_matrices)
+        where min_win_index_mat=min_winning_index array
 
   let index_winning_matrix=
         min_index $
@@ -85,7 +85,7 @@ main=do
           [y | x <- matrices !! index_winning_matrix, y <- x] $
           take
             (
-              ((+) . to_int)
+              ((+) . fromMaybe 0)
                 (final_number `elemIndex` array)
                 1
             )

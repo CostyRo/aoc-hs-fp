@@ -17,14 +17,15 @@ even_indeces list=filter_index list even
 odd_indeces :: [(Int,Int)] -> [(Int,Int)]
 odd_indeces list=filter_index list odd
 
-is_linear :: (Int,Int) -> (Int,Int) -> Bool
+is_linear :: Eq a => (a,a) -> (a,a) -> Bool
 is_linear a b
   | fst a == fst b || snd a == snd b = True
   | otherwise = False
 
-sort :: ((Int,Int),(Int,Int)) -> ((Int,Int),(Int,Int))
+
+sort :: Ord a => ((a,a), (a,a)) -> ((a, a),(a,a))
 sort tuple
-  | (a == c  && b > d) || (b == d  && a > c) = (snd tuple,fst tuple)
+  | (a == c && b > d) || (b == d && a > c) = (snd tuple,fst tuple)
   | otherwise = tuple
   where
     a=fst $ fst tuple

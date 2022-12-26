@@ -1,9 +1,7 @@
 {-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
 {-# HLINT ignore "Use camelCase" #-}
 import Data.List (intersect,elemIndex)
-
-to_int :: Maybe Int -> Int
-to_int (Just a)=a
+import Data.Maybe (fromMaybe)
 
 main :: IO()
 main = do
@@ -16,7 +14,7 @@ main = do
   print $
     sum
       [
-        ((+) . to_int)
+        ((+) . fromMaybe 0)
           (x  `elemIndex` (++) ['a'..'z'] ['A'..'Z'])
           1
             | x <- intersections

@@ -11,7 +11,7 @@ main :: IO()
 main = do
   string <- readFile "D:\\haskell\\aoc\\2022\\data\\day2.txt"
   let string_lines=lines string
-  
+
   let elf_choices=[
           if head x == 'A' then 1 else if head x == 'B' then 2 else 3
             | x <- string_lines
